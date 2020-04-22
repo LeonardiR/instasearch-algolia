@@ -1,0 +1,171 @@
+body{
+    font-family: 'OpenSansRegular', Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+a {
+    color: #BF0000;
+    text-decoration: none;
+}
+
+ul, ol{
+    padding: 0;
+}
+
+.wrapper {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin:  0 auto;
+    max-width: 1200px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.search-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.search-header h1{
+    font-size: 2.188em;
+    padding: 0.700em 0.500em 0.700em 0;
+    text-align: left;
+}
+
+.search-header__input{
+    width: 50%;
+}
+
+.search-header__input form{
+    width: auto;
+    position: relative;
+}
+
+.search-header__input input {
+    width: 100%;
+    background: #fff;
+    padding: 6px 0 6px 10px;
+    font-size: 0.938em;
+    display: block;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    height: 2.667em;
+    box-shadow: none;
+    font-family: 'OpenSansRegular', Helvetica, Arial, sans-serif;
+    color: #666;
+    -webkit-appearance: none;
+}
+
+.search-header__input button[type='submit'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 0;
+    background: url(./search-white.png) no-repeat center center #BD0000;
+    border-color: #BD0000;
+    height: 100%;
+    width: 4em;
+    z-index: 5;
+}
+.search-header__input button[type='reset'] {
+    display: none;
+}
+
+.search-header__input button[type='submit'] svg {
+    display: none;
+}
+
+.hits h2 {
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.ais-Hits-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    list-style: none;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: row wrap;
+}
+
+.search__content{
+    width: 100%;
+}
+
+.search__side-bar{
+    font-size: .9em;
+}
+
+.search__side-bar ul{
+    width: 100%;
+    list-style: none;
+    padding: 0;
+}
+
+.ais-RefinementList-item .input-checked{
+    display: none;
+}
+
+.ais-RefinementList-item.ais-RefinementList-item--selected .input-checked{
+    display: inherit;
+}
+
+.ais-RefinementList-item.ais-RefinementList-item--selected .input-unchecked{
+    display: none;
+}
+
+.refinement .count{
+    padding-left: .5em;
+    padding-top: .2em;
+    color: #999;
+}
+
+.pagination ul{
+    list-style: none;
+    text-align: center;
+
+}
+
+.pagination li {
+    font-size: 1.1em;
+    display: inline;
+    padding: .5em;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #BF0000;
+}
+
+.pagination a:hover {
+    background: #ddd;
+    text-decoration: underline;
+}
+
+.stats {
+    color: #666;
+}
+
+@media (min-width: 768px) {
+    .search__content{
+        width: 66.66666666666666%;
+    }
+    .search__side-bar{
+        width: 33.33333333333333%;
+    }
+    .search__content ol {
+        padding: 0 0 0 40px;
+    }
+}

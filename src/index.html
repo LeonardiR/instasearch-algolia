@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ca-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="search-header">
+        <h1>Cercador d'ens</h1>
+        <div id="search-input" class="search-header__input"></div>
+    </div>
+    <div id="stats" class="stats"></div>
+    <div class="search">
+        <div class="search__side-bar">
+            <div id="any" class="refinement">
+                <div class="search__content-filers"></div>
+            </div>
+            <div id="departament" class="refinement">
+                <div class="search__content-filers"></div>
+            </div>
+            <div id="document" class="refinement">
+                <div class="search__content-filers"></div>
+            </div>
+        </div>
+        <div class="search__content">
+            <div id="hits" class="hits"></div>
+        </div>
+        <div id="pagination" class="pagination"></div>
+    </div>
+</div>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+
+<!--TEMPLATES-->
+<script type="text/html" id="hit-template">
+    <div class="resultat">
+        <h2><a href="detall/detall.html#{{Codi}}">{{Títol}}</a></h2>
+        <p>{{Data}}</p>
+        <p>{{Tipus_document}}</p>
+        <p>Codi: {{Codi}}</p>
+    </div>
+</script>
+<script type="text/html" id="stats-template">
+    <p>S'han trobat <b>{{nbHits}}</b> resultats</p>
+</script>
+<script type="text/html" id="refinement-template">
+    <label class="ais-RefinementList-label">
+        <input type="checkbox" class="checkbox input-unchecked" value="{{label}}">
+        <input checked type="checkbox" class="checkbox input-checked" value="{{label}}">
+        <span class="labelText">{{label}}</span>
+        <span class="count">({{count}})</span>
+    </label>
+</script>
+<script type="text/html" id="no-results-template">
+    <div id="no-results-message">
+        <p>No s'han trobat resultats per a la cerca <em>"{{query}}"</em>.</p>
+    </div>
+</script>
+</body>
+</html>

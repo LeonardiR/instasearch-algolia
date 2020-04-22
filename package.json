@@ -1,0 +1,48 @@
+{
+  "name": "algolia-search",
+  "version": "1.0.0",
+  "description": "Algolia search project",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "algoliasearch": "^4.2.0",
+    "autocomplete.js": "^0.37.1",
+    "core-js": "^3.6.4",
+    "instantsearch.js": "^4.4.0",
+    "regenerator-runtime": "^0.13.2",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "css-loader": "^3.4.2",
+    "cssnano": "^4.1.10",
+    "autoprefixer": "^9.4.8",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "image-webpack-loader": "^6.0.0",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.0",
+    "webpack-manifest-plugin": "^2.0.4"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.js --mode=production",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js --mode=development",
+    "build-win": "set NODE_ENV=production && webpack --config webpack.config.js --mode=production",
+    "start-win": "set NODE_ENV=development && webpack-dev-server --config webpack.config.js --mode=development"
+  },
+  "author": "Regulo Leonardi",
+  "license": "ISC"
+}

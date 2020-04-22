@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+<div>
+    <div id="hit"></div>
+</div>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+
+<!--TEMPLATES-->
+<script type="text/html" id="hit-template">
+    <h1 class="hidden title_detail">{{{Títol}}}</h1>
+    <div class="content">
+        <p>{{Data}}</p>
+        <p>{{Tipus_document}}</p>
+        <p>Codi: {{Codi}}</p>
+        <a target="_blank" href="{{Document1}}">{{Document1}}</a>
+    </div>
+</script>
+</body>
+</html>
