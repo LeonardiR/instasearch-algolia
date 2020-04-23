@@ -5,19 +5,30 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="datepicker/datepicker.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
 <div class="wrapper">
     <div class="search-header">
-        <h1>Cercador d'ens</h1>
+        <h1>Cercador d'Acords del Govern</h1>
         <div id="search-input" class="search-header__input"></div>
     </div>
     <div id="stats" class="stats"></div>
     <div class="search">
         <div class="search__side-bar">
-            <div id="any" class="refinement">
-                <div class="search__content-filers"></div>
+            <div id="date-range" class="refinement date-range">
+                <p class="date-range__title"><strong>Data</strong></p>
+                <div class="date-inputs">
+                    <div class="date-inputs__item">
+                        <p>Data d'inici</p>
+                        <input autocomplete="off" type="text" id="startDate"/>
+                    </div>
+                    <div class="date-inputs__item">
+                        <p>Data de tancament</p>
+                        <input autocomplete="off" type="text" id="endDate"/>
+                    </div>
+                </div>
             </div>
             <div id="departament" class="refinement">
                 <div class="search__content-filers"></div>
@@ -33,8 +44,9 @@
     </div>
 </div>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
-<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+<script src="datepicker/datepicker.js"></script>
 
 <!--TEMPLATES-->
 <script type="text/html" id="hit-template">

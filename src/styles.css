@@ -113,8 +113,56 @@ a:hover {
     padding: 0;
 }
 
+.search__side-bar ul li{
+    margin-bottom: 10px;
+}
+
+.date-inputs{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 1em;
+}
+
+.date-inputs__item:not(:last-child){
+    margin-right: 30px;
+}
+
+.date-inputs__item{
+    position: relative;
+}
+
+.date-inputs__item p{
+    margin: 0 0 5px 0;
+}
+
+.date-inputs__item input{
+    width: 100%;
+    padding: 6px 0 6px 10px;
+    font-size: .938em;
+    display: block;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    height: 1.667em;
+    box-shadow: none;
+    font-family: OpenSansRegular,Helvetica,Arial,sans-serif;
+    color: #666;
+    -webkit-appearance: none;
+    background: url(./calendario.png) no-repeat 95% 50% #fff;
+    background-size: 20px 20px;
+}
+
+.date-range__title {
+    margin: 0 0 1em;
+}
+
+
+
 .ais-RefinementList-item .input-checked{
     display: none;
+}
+.ais-RefinementList-item .input-unchecked{
+    display: inherit;
 }
 
 .ais-RefinementList-item.ais-RefinementList-item--selected .input-checked{
@@ -124,11 +172,18 @@ a:hover {
 .ais-RefinementList-item.ais-RefinementList-item--selected .input-unchecked{
     display: none;
 }
+.ais-RefinementList-label{
+    font-weight: 500;
+}
 
 .refinement .count{
     padding-left: .5em;
     padding-top: .2em;
     color: #999;
+}
+
+.refinement{
+    margin-bottom: 2em;
 }
 
 .pagination ul{
@@ -156,6 +211,16 @@ a:hover {
 
 .stats {
     color: #666;
+}
+
+.active.datepicker.sel.datepicker.day.datepicker{
+    background-color: #BD0000 !important;
+    color: white !important;
+}
+
+.inBtw.datepicker {
+    background-color: rgba(189, 0, 0, 0.48) !important;
+    color: white !important;
 }
 
 @media (min-width: 768px) {
