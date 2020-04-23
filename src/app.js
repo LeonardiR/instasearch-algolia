@@ -77,7 +77,7 @@ import {Service} from './service';
             search.addWidgets([
                 instantsearch.widgets.searchBox({
                     container: '#search-input',
-                    placeholder: 'Cerca traspàs...'
+                    placeholder: 'Cerca acor...'
                 }),
                 instantsearch.widgets.stats({
                     container: '#stats',

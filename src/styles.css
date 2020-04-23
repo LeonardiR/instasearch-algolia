@@ -84,6 +84,9 @@ a:hover {
     font-weight: 500;
     font-size: 1.1em;
 }
+.hits .resultat p{
+    font-weight: 100;
+}
 
 .ais-Hits-item {
     border-bottom: 1px solid #ddd;
@@ -121,16 +124,20 @@ a:hover {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    flex-flow: row wrap;
     margin-bottom: 1em;
 }
 
 .date-inputs__item:not(:last-child){
-    margin-right: 30px;
+    margin: 0 30px 10px 0;
 }
 
 .date-inputs__item{
     position: relative;
+    width: 150px;
+    box-sizing: content-box;
 }
+
 
 .date-inputs__item p{
     margin: 0 0 5px 0;
@@ -155,8 +162,6 @@ a:hover {
 .date-range__title {
     margin: 0 0 1em;
 }
-
-
 
 .ais-RefinementList-item .input-checked{
     display: none;
@@ -221,6 +226,12 @@ a:hover {
 .inBtw.datepicker {
     background-color: rgba(189, 0, 0, 0.48) !important;
     color: white !important;
+}
+
+@media (min-width: 1024px) {
+    .date-inputs__item:not(:last-child){
+        margin: 0 30px 0 0;
+    }
 }
 
 @media (min-width: 768px) {
