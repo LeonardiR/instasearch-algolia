@@ -3,49 +3,51 @@ body{
     color: #333;
 }
 
-a {
-    color: #BF0000;
-    text-decoration: none;
-}
-
-ul, ol{
-    padding: 0;
-}
-
-.wrapper {
+.search {
     padding-right: 15px;
     padding-left: 15px;
     margin:  0 auto;
     max-width: 1200px;
 }
 
-a:hover {
+.search a {
+    color: #BF0000;
+    text-decoration: none;
+}
+
+.search ul, .search ol{
+    padding: 0;
+}
+
+.search a:hover {
     text-decoration: underline;
 }
 
-.search-header{
+.search .search__header{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-flow: row wrap;
 }
 
-.search-header h1{
+.search .search__header h1{
     font-size: 2.188em;
-    padding: 0.700em 0.500em 0.700em 0;
-    text-align: left;
+    padding: .7em 0;
+    text-align: center;
+    font-weight: 100;
+    width: 100%;
 }
 
-.search-header__input{
-    width: 50%;
+.search .search__header-input{
+    width: 100%;
 }
 
-.search-header__input form{
+.search .search__header-input form{
     width: auto;
     position: relative;
 }
 
-.search-header__input input {
+.search .search__header-input input {
     width: 100%;
     background: #fff;
     padding: 6px 0 6px 10px;
@@ -60,7 +62,7 @@ a:hover {
     -webkit-appearance: none;
 }
 
-.search-header__input button[type='submit'] {
+.search .search__header-input button[type='submit'] {
     position: absolute;
     top: 0;
     right: 0;
@@ -72,55 +74,65 @@ a:hover {
     width: 4em;
     z-index: 5;
 }
-.search-header__input button[type='reset'] {
+.search .search__header-input button[type='reset'] {
     display: none;
 }
 
-.search-header__input button[type='submit'] svg {
+.search .search__header-input button[type='submit'] svg {
     display: none;
 }
 
-.hits h2 {
+.search .hits h2 {
     font-weight: 500;
     font-size: 1.1em;
 }
-.hits .resultat p{
-    font-weight: 100;
+
+.search .hits h2 a {
+    color: #333333;
 }
 
-.ais-Hits-item {
+.search .hits h2 a:hover {
+    color: #BD0000;
+}
+
+.search .hits .hits__text{
+    font-weight: 100;
+    color: #999;
+}
+
+.search .ais-Hits-item {
     border-bottom: 1px solid #ddd;
     padding-bottom: 1em;
     margin-bottom: 1em;
     list-style: none;
 }
 
-.search {
+.search .search__container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-flow: row wrap;
 }
 
-.search__content{
+.search .search__content{
     width: 100%;
 }
 
-.search__side-bar{
+.search .search__side-bar{
     font-size: .9em;
 }
 
-.search__side-bar ul{
+.search .search__side-bar ul{
     width: 100%;
     list-style: none;
     padding: 0;
 }
 
-.search__side-bar ul li{
+.search .search__side-bar ul li{
     margin-bottom: 10px;
 }
 
-.date-inputs{
+.search .date-inputs{
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -128,22 +140,22 @@ a:hover {
     margin-bottom: 1em;
 }
 
-.date-inputs__item:not(:last-child){
+.search .date-inputs__item:not(:last-child){
     margin: 0 30px 10px 0;
 }
 
-.date-inputs__item{
+.search .date-inputs__item{
     position: relative;
     width: 150px;
     box-sizing: content-box;
 }
 
 
-.date-inputs__item p{
+.search .date-inputs__item p{
     margin: 0 0 5px 0;
 }
 
-.date-inputs__item input{
+.search .date-inputs__item input{
     width: 100%;
     padding: 6px 0 6px 10px;
     font-size: .938em;
@@ -156,65 +168,98 @@ a:hover {
     color: #666;
     -webkit-appearance: none;
     background: url(./calendario.png) no-repeat 95% 50% #fff;
-    background-size: 20px 20px;
+    background-size: 15px 15px;
 }
 
-.date-range__title {
+.search .date-range__title {
     margin: 0 0 1em;
 }
 
-.ais-RefinementList-item .input-checked{
-    display: none;
-}
-.ais-RefinementList-item .input-unchecked{
-    display: inherit;
+.search .refinement .refinement__label .checkbox{
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #999;
+    border-radius: 2px;
+    outline: none;
+    transition-duration: 0.3s;
+    cursor: pointer;
 }
 
-.ais-RefinementList-item.ais-RefinementList-item--selected .input-checked{
-    display: inherit;
-}
-
-.ais-RefinementList-item.ais-RefinementList-item--selected .input-unchecked{
+.search .refinement__item .input-checked{
     display: none;
 }
-.ais-RefinementList-label{
+.search .refinement__item .input-unchecked{
+    display: inline-block;
+    border: 1px solid #666666;
+    background-color: transparent;
+    vertical-align: middle;
+}
+
+.search .refinement__item.refinement__item--selected .input-checked{
+    display: inline-block;
+    background-color: #BD0000;
+    border: 1px solid #BD0000;
+    vertical-align: middle;
+}
+
+.search .refinement .refinement__item.refinement__item--selected .refinement__text::before {
+    content: '\2713';
+    display: block;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 6px;
+    top: 1.5px;
+    font-size: 12px;
+}
+
+.search .refinement__item.refinement__item--selected .input-unchecked{
+    display: none;
+}
+.search .refinement .refinement__label{
+    font-size: 13px;
     font-weight: 500;
+    position: relative;
 }
 
-.refinement .count{
+.search .refinement .refinement__count{
     padding-left: .5em;
     padding-top: .2em;
     color: #999;
 }
 
-.refinement{
+.search .refinement{
     margin-bottom: 2em;
 }
 
-.pagination ul{
+.search .pagination ul{
     list-style: none;
     text-align: center;
 
 }
 
-.pagination li {
+.search .pagination li {
     font-size: 1.1em;
     display: inline;
     padding: .5em;
 }
 
-.pagination a {
+.search .pagination a {
     padding: 8px 12px;
     text-decoration: none;
     color: #BF0000;
 }
 
-.pagination a:hover {
+.search .pagination a:hover {
     background: #ddd;
     text-decoration: underline;
 }
 
-.stats {
+.search .stats {
     color: #666;
 }
 
@@ -228,20 +273,27 @@ a:hover {
     color: white !important;
 }
 
-@media (min-width: 1024px) {
-    .date-inputs__item:not(:last-child){
-        margin: 0 30px 0 0;
+@media (min-width: 768px) {
+    .search .search__content{
+        width: 66.66666666666666%;
+    }
+    .search .search__side-bar{
+        width: 33.33333333333333%;
+    }
+    .search .search__content ol {
+        padding: 0 0 0 40px;
     }
 }
 
-@media (min-width: 768px) {
-    .search__content{
-        width: 66.66666666666666%;
+@media (min-width: 1024px) {
+    .search .date-inputs__item:not(:last-child){
+        margin: 0 30px 0 0;
     }
-    .search__side-bar{
-        width: 33.33333333333333%;
+    .search .search__header-input {
+        width: 45%;
     }
-    .search__content ol {
-        padding: 0 0 0 40px;
+    .search .search__header h1{
+        width: 50%;
+        text-align: left;
     }
 }

@@ -1,14 +1,14 @@
 export class Service {
     constructor() {
-        this.url = 'https://2RGQIXQAQ7-dsn.algolia.net/1/indexes/pre_ACORDS_DEL_GOVERN';
+        this.url = 'https://GAVVNU5N19-dsn.algolia.net/1/indexes/pre_ACORDS_DEL_GOVERN';
     }
 
    async getData(){
         let response = await fetch(this.url , {
             method: 'get',
             headers: {
-                'X-Algolia-API-Key': 'cf8ee0237b646e5eb579182451b740c8',
-                'X-Algolia-Application-Id': '2RGQIXQAQ7',
+                'X-Algolia-API-Key': 'f612c10b31cc7d018b2f5bc35ee83413',
+                'X-Algolia-Application-Id': 'GAVVNU5N19',
                 'Content-Type' : 'application/json',
             }
         });

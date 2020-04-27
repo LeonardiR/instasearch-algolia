@@ -104,7 +104,6 @@ function getMonthsInfoForCalendar(passedInDate, monthsToShow, local) {
         var month = getDays(passedInDate, date, i, local); // Get the days that go in the month
         monthsArr.push(month);
     }
-
     return monthsArr;
 }
 

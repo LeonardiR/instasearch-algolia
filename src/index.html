@@ -9,13 +9,13 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-<div class="wrapper">
-    <div class="search-header">
+<div class="search">
+    <div class="search__header">
         <h1>Cercador d'Acords del Govern</h1>
-        <div id="search-input" class="search-header__input"></div>
+        <div id="search-input" class="search__header-input"></div>
     </div>
     <div id="stats" class="stats"></div>
-    <div class="search">
+    <div class="search__container">
         <div class="search__side-bar">
             <div id="date-range" class="refinement date-range">
                 <p class="date-range__title"><strong>Data</strong></p>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div id="departament" class="refinement">
+            <div id="department" class="refinement">
                 <div class="search__content-filers"></div>
             </div>
             <div id="document" class="refinement">
@@ -50,20 +50,20 @@
 
 <!--TEMPLATES-->
 <script type="text/html" id="hit-template">
-    <div class="resultat">
-        <p>{{Data}} - {{Tipus_document}}</p>
-        <h2><a href="detall/detall.html#{{Codi}}">{{Títol}}</a></h2>
+    <div class="hits__item">
+        <p class="hits__text">{{dayNumber}} {{monthName}} {{fullYear}} - {{tipus_document}}</p>
+        <h2><a target="_blank" href="{{document1}}">{{titol}}</a></h2>
     </div>
 </script>
 <script type="text/html" id="stats-template">
     <p>S'han trobat <b>{{nbHits}}</b> resultats</p>
 </script>
 <script type="text/html" id="refinement-template">
-    <label class="ais-RefinementList-label">
+    <label class="refinement__label">
         <input type="checkbox" class="checkbox input-unchecked" value="{{label}}">
         <input checked type="checkbox" class="checkbox input-checked" value="{{label}}">
-        <span class="labelText">{{label}}</span>
-        <span class="count">({{count}})</span>
+        <span class="refinement__text">{{label}}</span>
+        <span class="refinement__count">({{count}})</span>
     </label>
 </script>
 <script type="text/html" id="no-results-template">

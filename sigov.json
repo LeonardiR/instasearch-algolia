@@ -1,74 +1,82 @@
 [
   {
-    "Codi": "7657",
-    "Departament": "Departament d'Acció Exterior, Relacions Institucionals i Transparència",
-    "Títol": "ACORD GOV/31/2018, de 3 de juliol, pel qual es designa la presidència de la representació de la Generalitat de Catalunya a la Comissió Bilateral Generalitat–Estat i es designen els representants de la Generalitat de Catalunya en aquesta Comissió.",
-    "Any": "2018",
-    "Data": "03/07/2018",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1684983&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"7657",
+    "departament":"Departament d'Acció Exterior, Relacions Institucionals i Transparència",
+    "titol":"ACORD GOV/31/2018, de 3 de juliol, pel qual es designa la presidència de la representació de la Generalitat de Catalunya a la Comissió Bilateral Generalitat–Estat i es designen els representants de la Generalitat de Catalunya en aquesta Comissió.",
+    "any":"2018",
+    "data":"03/07/2018",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1684983&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1530568800
   },
   {
-    "Codi": "7677",
-    "Departament": "Departament d'Empresa i Coneixement",
-    "Títol": "ACORD GOV/74/2018, de 31 de juliol, de cessament de la senyora Maria Assumpta Farran i Poca com a directora de l'Institut Català d'Energia.",
-    "Any": "2018",
-    "Data": "31/07/2018",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1690136&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"7677",
+    "departament":"Departament d'Empresa i Coneixement",
+    "titol":"ACORD GOV/74/2018, de 31 de juliol, de cessament de la senyora Maria Assumpta Farran i Poca com a directora de l'Institut Català d'Energia.",
+    "any":"2018",
+    "data":"31/07/2018",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1690136&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1532988000
   },
   {
-    "Codi": "8068",
-    "Departament": "Departament de la Presidència",
-    "Títol": "ACORD GOV/24/2020, de 18 de febrer, pel qual s'aprova el document de base de l'Acord nacional per a l'Agenda 2030 a Catalunya.",
-    "Any": "2020",
-    "Data": "18/02/2020",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1784916&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"8068",
+    "departament":"Departament de la Presidència",
+    "titol":"ACORD GOV/24/2020, de 18 de febrer, pel qual s'aprova el document de base de l'Acord nacional per a l'Agenda 2030 a Catalunya.",
+    "any":"2020",
+    "data":"18/02/2020",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1784916&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1581980400
   },
   {
-    "Codi": "8102",
-    "Departament": "Departament de la Vicepresidència i d'Economia i Hisenda",
-    "Títol": "ACORD GOV/55/2020, de 31 de març, pel qual s'aproven els objectius i el contingut mínim de l'Estratègia catalana de contractació pública.",
-    "Any": "2020",
-    "Data": "31/03/2020",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1791308&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"8102",
+    "departament":"Departament de la Vicepresidència i d'Economia i Hisenda",
+    "titol":"ACORD GOV/55/2020, de 31 de març, pel qual s'aproven els objectius i el contingut mínim de l'Estratègia catalana de contractació pública.",
+    "any":"2020",
+    "data":"31/03/2020",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1791308&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1585605600
   },
   {
-    "Codi": "8089",
-    "Departament": "Departament de la Presidència",
-    "Títol": "ACORD GOV/47/2017, de 17 de març, pel qual s'autoritza l'Empresa de Promoció i Localització Industrial de Catalunya, SA (AVANÇSA), a participar en el capital social de Neos Surgery, SL.",
-    "Any": "2017",
-    "Data": "17/03/2017",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1790197&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"8089",
+    "departament":"Departament de la Presidència",
+    "titol":"ACORD GOV/47/2017, de 17 de març, pel qual s'autoritza l'Empresa de Promoció i Localització Industrial de Catalunya, SA (AVANÇSA), a participar en el capital social de Neos Surgery, SL.",
+    "any":"2017",
+    "data":"17/03/2017",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1790197&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1489705200
   },
   {
-    "Codi": "8032",
-    "Departament": "Departament de Territori i Sostenibilitat",
-    "Títol": "ACORD GOV/194/2019, de 23 de desembre, pel qual es declara el nou servei ferroviari d'accés a les terminals T1 i T2 de l'aeroport Josep Tarradellas Barcelona-El Prat com a servei ferroviari de rodalies de Catalunya, es declara de servei públic i se n'atribueix la prestació a Ferrocarrils de la Generalitat de Catalunya, mitjançant FGCRAIL, SA.",
-    "Any": "2019",
-    "Data": "23/12/2019",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1777517&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"8032",
+    "departament":"Departament de Territori i Sostenibilitat",
+    "titol":"ACORD GOV/194/2019, de 23 de desembre, pel qual es declara el nou servei ferroviari d'accés a les terminals T1 i T2 de l'aeroport Josep Tarradellas Barcelona-El Prat com a servei ferroviari de rodalies de Catalunya, es declara de servei públic i se n'atribueix la prestació a Ferrocarrils de la Generalitat de Catalunya, mitjançant FGCRAIL, SA.",
+    "any":"2019",
+    "data":"23/12/2019",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1777517&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1577055600
   },
   {
-    "Codi": "8027",
-    "Departament": "Departament de la Presidència",
-    "Títol": "ACORD GOV/186/2019, de 17 de desembre, pel qual es declara l'execució de la canonada d'impulsió d'aigües regenerades de l'estació depuradora d'aigües residuals (EDAR) de Manresa d'interès prioritari de la Generalitat de Catalunya i s'incorpora a la Planificació hidrològica del districte de conca fluvial de Catalunya.",
-    "Any": "2019",
-    "Data": "17/12/2019",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1776216&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"8027",
+    "departament":"Departament de la Presidència",
+    "titol":"ACORD GOV/186/2019, de 17 de desembre, pel qual es declara l'execució de la canonada d'impulsió d'aigües regenerades de l'estació depuradora d'aigües residuals (EDAR) de Manresa d'interès prioritari de la Generalitat de Catalunya i s'incorpora a la Planificació hidrològica del districte de conca fluvial de Catalunya.",
+    "any":"2019",
+    "data":"17/12/2019",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1776216&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1576537200
   },
   {
-    "Codi": "7997",
-    "Departament": "Departament de Polítiques Digitals i Administració Pública",
-    "Títol": "ACORD GOV/161/2017, de 5 de novembre, pel qual es modifica l'Acord GOV/156/2018, de 20 de desembre, pel qual s'aprova l'oferta d'ocupació pública parcial per a l'estabilització i consolidació de l'ocupació temporal del personal al servei de l'Administració de la Generalitat de Catalunya per al 2017.",
-    "Any": "2017",
-    "Data": "05/11/2017",
-    "Document1": "https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1768868&type=01",
-    "Tipus_document": "Acord del govern"
+    "codi":"7997",
+    "departament":"Departament de Polítiques Digitals i Administració Pública",
+    "titol":"ACORD GOV/161/2017, de 5 de novembre, pel qual es modifica l'Acord GOV/156/2018, de 20 de desembre, pel qual s'aprova l'oferta d'ocupació pública parcial per a l'estabilització i consolidació de l'ocupació temporal del personal al servei de l'Administració de la Generalitat de Catalunya per al 2017.",
+    "any":"2017",
+    "data":"05/11/2017",
+    "document1":"https://portaldogc.gencat.cat/utilsEADOP/AppJava/PdfProviderServlet?versionId=1768868&type=01",
+    "tipus_document":"Acord del govern",
+    "timeStamp":1509836400
   }
 ]

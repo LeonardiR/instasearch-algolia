@@ -1,27 +1,80 @@
 import {Service} from './service';
 (function () {
     'use strict';
+
+    /** Utility Functions */
+
+    function dateFormater (date, format, delimiter) {
+        var formatLowerCase= format.toLowerCase(),
+            formatItems= formatLowerCase.split(delimiter),
+            dateItems = date.split(delimiter),
+            monthIndex= formatItems.indexOf("mm"),
+            dayIndex= formatItems.indexOf("dd"),
+            yearIndex= formatItems.indexOf("yyyy"),
+            month= parseInt(dateItems[monthIndex]);
+        month-=1;
+        return new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+    }
+
+    function getMonthName (date) {
+        var months = [
+            'Gener',
+            'Febrer',
+            'Març',
+            'Abril',
+            'Maig',
+            'Juny',
+            'Juliol',
+            'Agost',
+            'Setembre',
+            'Octubre',
+            'Novembre',
+            'Desembre'];
+        return months[date.getMonth()];
+    }
+
+    function getTemplate (templateName) {
+        return document.querySelector('#' + templateName + '-template').innerHTML;
+    }
+
+    /** Search Class */
+
     var s, _this,
     Search = {
         settings: {
-            searchClient: algoliasearch('2RGQIXQAQ7', 'cf8ee0237b646e5eb579182451b740c8'),
+            searchClient: algoliasearch('GAVVNU5N19', 'f612c10b31cc7d018b2f5bc35ee83413'),
             options : {indexName: 'pre_ACORDS_DEL_GOVERN'}
         },
 
-        getTemplate: function(templateName) {
-            return document.querySelector('#' + templateName + '-template').innerHTML;
-        },
-
-        stringToDate: function(date, format, delimiter) {
-            var formatLowerCase= format.toLowerCase(),
-                formatItems= formatLowerCase.split(delimiter),
-                dateItems = date.split(delimiter),
-                monthIndex= formatItems.indexOf("mm"),
-                dayIndex= formatItems.indexOf("dd"),
-                yearIndex= formatItems.indexOf("yyyy"),
-                month= parseInt(dateItems[monthIndex]);
-                month-=1;
-            return new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+        dateRangeCustomWidget: function (){
+            var customRangeDate = instantsearch.connectors.connectRange(function (renderOptions, isFirstRender) {
+                if (!isFirstRender) return;
+                var refine  = renderOptions.refine,
+                    inputStart = document.getElementById('startDate'),
+                    inputEnd =  document.getElementById('endDate');
+                inputStart.addEventListener('change', function(event) {
+                    refine([event.currentTarget.value]);
+                });
+                inputEnd.addEventListener('change', function(event) {
+                    refine([event.currentTarget.value]);
+                });
+                new TinyPicker({
+                    firstBox: document.getElementById('startDate'),
+                    lastBox: document.getElementById('endDate'),
+                    allowPast: true,
+                    months: 1,
+                    days: ['Dg','Dl','Dm','Dc','Dj','Dv','Ds'],
+                    overrideClass: 'datepicker',
+                    local: 'es-ES',
+                    success: function(startDate, endDate){
+                        const start = new Date(startDate)/1000;
+                        const end = new Date(endDate)/1000;
+                        refine([start, end]);
+                    },
+                    err: function(){}
+                }).init();
+            });
+            return customRangeDate;
         },
 
         addSearchWidgets: function() {
@@ -46,43 +99,17 @@ import {Service} from './service';
                 },
             })(instantsearch.widgets.refinementList);
 
-            var customRangeDate = instantsearch.connectors.connectRange(function (renderOptions, isFirstRender) {
-                if (!isFirstRender) return;
-                 var refine  = renderOptions.refine,
-                     inputStart = document.getElementById('startDate'),
-                     inputEnd =  document.getElementById('endDate');
-                inputStart.addEventListener('change', function(event) {
-                    refine([event.currentTarget.value]);
-                });
-                inputEnd.addEventListener('change', function(event) {
-                    refine([event.currentTarget.value]);
-                });
-                new TinyPicker({
-                    firstBox: document.getElementById('startDate'),
-                    lastBox: document.getElementById('endDate'),
-                    allowPast: true,
-                    months: 1,
-                    days: ['Dg','Dl','Dm','Dc','Dj','Dv','Ds'],
-                    overrideClass: 'datepicker',
-                    local: 'ca-ES',
-                    success: function(startDate, endDate){
-                        const start = new Date(startDate)/1000;
-                        const end = new Date(endDate)/1000;
-                        refine([start, end]);
-                    },
-                    err: function(){}
-                }).init();
-            });
+            var dateRangeCustomWidget = _this.dateRangeCustomWidget();
 
             search.addWidgets([
                 instantsearch.widgets.searchBox({
                     container: '#search-input',
-                    placeholder: 'Cerca acor...'
+                    placeholder: 'Cerca...'
                 }),
                 instantsearch.widgets.stats({
                     container: '#stats',
                     templates: {
-                        text: _this.getTemplate('stats'),
+                        text: getTemplate('stats'),
                     },
                     transformData: function (item) {
                         item.nbHits = new Intl.NumberFormat('ca-ES').format(item.nbHits);
@@ -93,26 +120,17 @@ import {Service} from './service';
                     container: '#hits',
                     hitsPerPage: 20,
                     templates: {
-                        item: _this.getTemplate('hit'),
-                        empty: _this.getTemplate('no-results'),
+                        item: getTemplate('hit'),
+                        empty: getTemplate('no-results'),
                     },
                     transformItems: function (items) {
-                        var index = s.searchClient.initIndex(s.options.indexName);
-                        if( items.length > 0 && !items[0].timeStamp){
-                            for(var i=0; items.length >i; i++){
-                                items[i].timeStamp = _this.stringToDate(items[i].Data,"dd/MM/yyyy","/")/1000;
-                            }
-                            index.clearObjects();
-                            index.saveObjects(items, { autoGenerateObjectIDIfNotExist: true });
-                            return items;
-                        }else{
-                            return items;
+                        for(var i=0; items.length >i; i++){
+                            items[i].monthName = getMonthName(dateFormater(items[i].data,"dd/MM/yyyy","/"));
+                            items[i].dayNumber = dateFormater(items[i].data,"dd/MM/yyyy","/").getDate();
+                            items[i].fullYear = dateFormater(items[i].data,"dd/MM/yyyy","/").getFullYear();
                         }
+                        return items;
                     }
-                }),
-                customRangeDate({
-                    container: document.querySelector('#date-range'),
-                    attribute: 'timeStamp',
                 }),
                 instantsearch.widgets.pagination({
                     container: '#pagination',
@@ -124,26 +142,38 @@ import {Service} from './service';
                         next: "següent",
                     },
                 }),
+                dateRangeCustomWidget({
+                    container: document.querySelector('#date-range'),
+                    attribute: 'timeStamp',
+                }),
                 refinementListWithPanelDepartament({
-                    container: '#departament .search__content-filers',
-                    attribute: 'Departament',
+                    container: '#department .search__content-filers',
+                    attribute: 'departament',
                     autoHideContainer: true,
                     limit: 100,
                     operator: 'or',
                     sortBy: ['name:asc'],
                     templates: {
-                        item: _this.getTemplate('refinement'),
+                        item: getTemplate('refinement'),
+                    },
+                    cssClasses: {
+                        item: 'refinement__item',
+                        selectedItem: 'refinement__item--selected',
                     },
                 }),
                 refinementListWithPanelDocument({
                     container: '#document .search__content-filers',
-                    attribute: 'Tipus_document',
+                    attribute: 'tipus_document',
                     autoHideContainer: true,
                     limit: 100,
                     operator: 'or',
                     sortBy: ['name:asc'],
                     templates: {
-                        item: _this.getTemplate('refinement'),
+                        item: getTemplate('refinement'),
+                    },
+                    cssClasses: {
+                        item: 'refinement__item',
+                        selectedItem: 'refinement__item--selected',
                     },
                 })
             ]);
@@ -155,7 +185,6 @@ import {Service} from './service';
             _this = this;
             this.addSearchWidgets();
         },
-
     };
     Search.init();
     var service = new Service();
@@ -163,3 +192,4 @@ import {Service} from './service';
         console.log(data);
     });
 })();
+
