@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="datepicker/datepicker.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
@@ -21,21 +21,22 @@
                 <p class="date-range__title"><strong>Data</strong></p>
                 <div class="date-inputs">
                     <div class="date-inputs__item">
-                        <p>Data d'inici</p>
-                        <input autocomplete="off" type="text" id="startDate"/>
+                        <p>des de</p>
+                        <input placeholder="dd/mm/aaaa"  type="text" id="from" autocomplete="off" name="from">
                     </div>
                     <div class="date-inputs__item">
-                        <p>Data de tancament</p>
-                        <input autocomplete="off" type="text" id="endDate"/>
+                        <p>fins a</p>
+                        <input placeholder="dd/mm/aaaa"  type="text" id="to" autocomplete="off" name="to">
                     </div>
+                    <button id="refresh" class="refresh"></button>
                 </div>
             </div>
             <div id="department" class="refinement">
                 <div class="search__content-filers"></div>
             </div>
-            <div id="document" class="refinement">
+            <!--<div id="document" class="refinement">
                 <div class="search__content-filers"></div>
-            </div>
+            </div>-->
         </div>
         <div class="search__content">
             <div id="hits" class="hits"></div>
@@ -46,13 +47,20 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
-<script src="datepicker/datepicker.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!--TEMPLATES-->
 <script type="text/html" id="hit-template">
     <div class="hits__item">
-        <p class="hits__text">{{dayNumber}} {{monthName}} {{fullYear}} - {{tipus_document}}</p>
-        <h2><a target="_blank" href="{{document1}}">{{titol}}</a></h2>
+        <p class="hits__text">{{data}} - {{departament}}</p>
+        {{#document1}}<h2><a target="_blank" href="{{document1}}">{{titol}}</a></h2>{{/document1}}
+        {{^document1}}<h2>{{titol}}</h2>{{/document1}}
+        {{#otherDocuments}}<small class="other"><strong>{{otherDocuments}}: </strong></small>{{/otherDocuments}}
+        {{#document2}}<a target="_blank" href="{{document2}}"><div class="icon"><img src="doc.png"></div></a>{{/document2}}
+        {{#document3}}<a target="_blank" href="{{document3}}"><div class="icon"><img src="doc.png"></div></a>{{/document3}}
+        {{#document4}}<a target="_blank" href="{{document4}}"><div class="icon"><img src="doc.png"></div></a>{{/document4}}
+        {{#document5}}<a target="_blank" href="{{document5}}"><div class="icon"><img src="doc.png"></div></a>{{/document5}}
     </div>
 </script>
 <script type="text/html" id="stats-template">

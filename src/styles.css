@@ -100,6 +100,16 @@ body{
     color: #999;
 }
 
+.search .hits .hits__item .icon{
+    width: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.search .hits .hits__item .icon img{
+    width: 100%;
+}
+
 .search .ais-Hits-item {
     border-bottom: 1px solid #ddd;
     padding-bottom: 1em;
@@ -134,19 +144,37 @@ body{
 
 .search .date-inputs{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     flex-flow: row wrap;
     margin-bottom: 1em;
+    position: relative;
 }
 
-.search .date-inputs__item:not(:last-child){
+.search .date-range .refresh{
+    width:15px;
+    height: 15px;
+    background: url(./actualizar.png) no-repeat 95% 50% #fff;
+    background-size: 100%;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+    top: 8px;
+    position: relative;
+    display: none;
+}
+
+.search .date-range .refresh.active{
+    display: block;
+}
+
+.search .date-inputs .date-inputs__item{
     margin: 0 30px 10px 0;
 }
 
 .search .date-inputs__item{
     position: relative;
-    width: 150px;
+    width: 123px;
     box-sizing: content-box;
 }
 
@@ -263,15 +291,71 @@ body{
     color: #666;
 }
 
-.active.datepicker.sel.datepicker.day.datepicker{
+.ui-widget-header {
+    border: 1px solid transparent;
+    background: transparent;
+    font-weight: normal;
+}
+
+.ui-datepicker-current-day a{
+    border: none !important;
     background-color: #BD0000 !important;
     color: white !important;
 }
 
-.inBtw.datepicker {
-    background-color: rgba(189, 0, 0, 0.48) !important;
+.ui-datepicker-today a {
+    border: none !important;
+    background-color: rgba(189, 0, 0, 0.48) !important;;
     color: white !important;
 }
+
+.ui-widget-content .ui-state-default {
+    border: none;
+    background-color: transparent;
+    color: #666666;
+    text-align: center;
+    width: 25px;
+}
+
+.ui-widget-content .ui-state-hover{
+    background-color: transparent;
+    border: none;
+}
+
+.ui-widget-content .ui-datepicker-prev-hover{
+    left: 2px;
+    top: 2px
+}
+
+.ui-widget-content .ui-datepicker-next-hover{
+    right: 2px;
+    top: 2px;
+}
+
+.ui-widget-header .ui-datepicker-prev span{
+    background: url(./arrow-left.png) no-repeat center center transparent;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+.ui-widget-header .ui-datepicker-next span {
+    background: url(./arrow-right.png) no-repeat center center transparent;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+.ui-widget-content .ui-state-default:hover {
+    background-color: #666666;
+    color: white;
+}
+
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year{
+    border: none;
+}
+.ui-datepicker select.ui-datepicker-month{
+    margin-right: 5px;
+}
+
 
 @media (min-width: 768px) {
     .search .search__content{
@@ -286,7 +370,7 @@ body{
 }
 
 @media (min-width: 1024px) {
-    .search .date-inputs__item:not(:last-child){
+    .search .date-inputs .date-inputs__item{
         margin: 0 30px 0 0;
     }
     .search .search__header-input {

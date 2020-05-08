@@ -1,37 +1,7 @@
-import {Service} from './service';
-(function () {
+(function( $ ) {
     'use strict';
 
     /** Utility Functions */
-
-    function dateFormater (date, format, delimiter) {
-        var formatLowerCase= format.toLowerCase(),
-            formatItems= formatLowerCase.split(delimiter),
-            dateItems = date.split(delimiter),
-            monthIndex= formatItems.indexOf("mm"),
-            dayIndex= formatItems.indexOf("dd"),
-            yearIndex= formatItems.indexOf("yyyy"),
-            month= parseInt(dateItems[monthIndex]);
-        month-=1;
-        return new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
-    }
-
-    function getMonthName (date) {
-        var months = [
-            'Gener',
-            'Febrer',
-            'Març',
-            'Abril',
-            'Maig',
-            'Juny',
-            'Juliol',
-            'Agost',
-            'Setembre',
-            'Octubre',
-            'Novembre',
-            'Desembre'];
-        return months[date.getMonth()];
-    }
 
     function getTemplate (templateName) {
         return document.querySelector('#' + templateName + '-template').innerHTML;
@@ -42,37 +12,123 @@ import {Service} from './service';
     var s, _this,
     Search = {
         settings: {
-            searchClient: algoliasearch('GAVVNU5N19', 'f612c10b31cc7d018b2f5bc35ee83413'),
-            options : {indexName: 'pre_ACORDS_DEL_GOVERN'}
+            searchClient: algoliasearch('WI4G3IOEA5', '1db3a3bcbfde7f48c3d5f5bc632776c9'),
+            options : {indexName: 'pre_SIGOV_ACORDS'}
         },
 
         dateRangeCustomWidget: function (){
+            var startDate,
+                endDate;
             var customRangeDate = instantsearch.connectors.connectRange(function (renderOptions, isFirstRender) {
                 if (!isFirstRender) return;
                 var refine  = renderOptions.refine,
-                    inputStart = document.getElementById('startDate'),
-                    inputEnd =  document.getElementById('endDate');
-                inputStart.addEventListener('change', function(event) {
-                    refine([event.currentTarget.value]);
-                });
-                inputEnd.addEventListener('change', function(event) {
-                    refine([event.currentTarget.value]);
-                });
-                new TinyPicker({
-                    firstBox: document.getElementById('startDate'),
-                    lastBox: document.getElementById('endDate'),
-                    allowPast: true,
-                    months: 1,
-                    days: ['Dg','Dl','Dm','Dc','Dj','Dv','Ds'],
-                    overrideClass: 'datepicker',
-                    local: 'es-ES',
-                    success: function(startDate, endDate){
-                        const start = new Date(startDate)/1000;
-                        const end = new Date(endDate)/1000;
-                        refine([start, end]);
-                    },
-                    err: function(){}
-                }).init();
+                    $from = $( "#from" ),
+                    $to = $( "#to" ),
+                    $refresh = $( "#refresh" ),
+                    dateFormat = "dd/mm/yy",
+                    from = $from.datepicker({
+                            changeMonth: true,
+                            changeYear: true,
+                            numberOfMonths: 1,
+                            prevText: '< Ant',
+                            nextText: 'Sig >',
+                            monthNames: ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
+                            monthNamesShort: ['gen','febr','març','abr', 'maig','juny','jul','ag','set', 'oct','nov','des'],
+                            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                            dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                            dayNamesMin: ['Dg','Dl','Dm','Dc','Dj','Dv','Ds'],
+                            weekHeader: 'Sm',
+                            dateFormat: 'dd/mm/yy',
+                            firstDay: 1,
+                            isRTL: false,
+                            showMonthAfterYear: false,
+                            yearSuffix: ''
+                        }).on( "change", function() {
+                            $from.css("border", "1px solid #ddd");
+                            $to.css("border", "1px solid #ddd");
+                            to.datepicker( "option", "minDate", getDate( this ));
+                            startDate = getDate( this )/1000;
+                            if(startDate && endDate){
+                                refine([startDate, endDate]);
+                            } else {
+                                refine([]);
+                            }
+                            if(!startDate && $from.val()){
+                                $from.css("border", "2px solid #C00000");
+                            }
+                            if(!($refresh.hasClass( "active" )) && $from.val()){
+                                $refresh.addClass( "active" );
+                            }
+                            if(!$to.val() && !$from.val()){
+                                $refresh.removeClass( "active" );
+                            }
+                        }),
+                    to = $to.datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        numberOfMonths: 1,
+                        closeText: 'Cerrar',
+                        prevText: '< Ant',
+                        nextText: 'Sig >',
+                        currentText: 'Hoy',
+                        monthNames: ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'],
+                        monthNamesShort: ['gen','febr','març','abr', 'maig','juny','jul','ag','set', 'oct','nov','des'],
+                        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                        dayNamesMin: ['Dg','Dl','Dm','Dc','Dj','Dv','Ds'],
+                        weekHeader: 'Sm',
+                        dateFormat: 'dd/mm/yy',
+                        firstDay: 1,
+                        isRTL: false,
+                        showMonthAfterYear: false,
+                        yearSuffix: ''
+                    }).on( "change", function() {
+                        $to.css("border", "1px solid #ddd");
+                        $from.css("border", "1px solid #ddd");
+                        from.datepicker( "option", "maxDate", getDate( this ));
+                        endDate = getDate( this )/1000;
+                        if(startDate && endDate){
+                            refine([startDate, endDate]);
+                        } else {
+                            refine([]);
+                        }
+                        if(!endDate && $to.val()){
+                            $to.css("border", "2px solid #C00000");
+                        }
+                        if(!($refresh.hasClass( "active" )) && $to.val()){
+                            $refresh.addClass( "active" );
+                        }
+                        if(!$to.val() && !$from.val()){
+                            $refresh.removeClass( "active" );
+                        }
+                    });
+
+                    $refresh.click(function () {
+                        refreshCalendar();
+                    });
+
+                    function getDate( element ) {
+                        var date;
+                        try {
+                            date = $.datepicker.parseDate( dateFormat, element.value );
+                        } catch( error ) {
+                            date = null;
+                        }
+                        return date;
+                    }
+
+                    function refreshCalendar () {
+                        $to.css("border", "2px solid #ddd");
+                        $from.css("border", "2px solid #ddd");
+                        to.datepicker( "option", "minDate", null);
+                        to.datepicker('setDate', null);
+                        from.datepicker( "option", "maxDate", null);
+                        from.datepicker('setDate', null);
+                        $refresh.removeClass( "active" );
+                        startDate = null;
+                        endDate = null;
+                        refine([]);
+                    }
             });
             return customRangeDate;
         },
@@ -90,14 +146,14 @@ import {Service} from './service';
                 },
             })(instantsearch.widgets.refinementList);
 
-            var refinementListWithPanelDocument = instantsearch.widgets.panel({
+            /*var refinementListWithPanelDocument = instantsearch.widgets.panel({
                 templates: {
                     header: '<strong><span>Document</span></strong>',
                 },
                 hidden: function(options) {
                     return options.results.nbHits === 0;
                 },
-            })(instantsearch.widgets.refinementList);
+            })(instantsearch.widgets.refinementList);*/
 
             var dateRangeCustomWidget = _this.dateRangeCustomWidget();
 
@@ -125,9 +181,10 @@ import {Service} from './service';
                     },
                     transformItems: function (items) {
                         for(var i=0; items.length >i; i++){
-                            items[i].monthName = getMonthName(dateFormater(items[i].data,"dd/MM/yyyy","/"));
-                            items[i].dayNumber = dateFormater(items[i].data,"dd/MM/yyyy","/").getDate();
-                            items[i].fullYear = dateFormater(items[i].data,"dd/MM/yyyy","/").getFullYear();
+                            if(items[i].document2 || items[i].document3 ||
+                               items[i].document4 || items[i].document5) {
+                                items[i].otherDocuments = 'Altres Documents';
+                            }
                         }
                         return items;
                     }
@@ -161,7 +218,7 @@ import {Service} from './service';
                         selectedItem: 'refinement__item--selected',
                     },
                 }),
-                refinementListWithPanelDocument({
+                /*refinementListWithPanelDocument({
                     container: '#document .search__content-filers',
                     attribute: 'tipus_document',
                     autoHideContainer: true,
@@ -175,7 +232,7 @@ import {Service} from './service';
                         item: 'refinement__item',
                         selectedItem: 'refinement__item--selected',
                     },
-                })
+                })*/
             ]);
             search.start();
         },
@@ -187,9 +244,14 @@ import {Service} from './service';
         },
     };
     Search.init();
-    var service = new Service();
-    service.getData().then(data=>{
-        console.log(data);
-    });
-})();
+})(jQuery);
+
+
+
+
+
+
+
+
+
 
